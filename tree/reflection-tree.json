@@ -1,0 +1,236 @@
+[
+  {
+    "id": "START",
+    "parentId": null,
+    "type": "start",
+    "text": "Good evening. Let's look at your day.",
+    "options": null,
+    "target": "A1_OPEN",
+    "signal": null
+  },
+  {
+    "id": "A1_OPEN",
+    "parentId": "START",
+    "type": "question",
+    "text": "How would you describe today in one word?",
+    "options": "Tough|Productive|Mixed|Frustrating",
+    "target": "A1_D1",
+    "signal": null
+  },
+  {
+    "id": "A1_D1",
+    "parentId": "A1_OPEN",
+    "type": "decision",
+    "text": null,
+    "options": "answer=Productive|Mixed:A1_Q_AGENCY_HIGH;answer=Tough|Frustrating:A1_Q_AGENCY_LOW",
+    "target": null,
+    "signal": null
+  },
+  {
+    "id": "A1_Q_AGENCY_HIGH",
+    "parentId": "A1_D1",
+    "type": "question",
+    "text": "You said \"{A1_OPEN.answer}\". When something went well today, what made it happen?",
+    "options": "I prepared well|The team came through|I got lucky|I adapted on the fly",
+    "target": "A1_D2",
+    "signal": "I prepared well:axis1:internal|I adapted on the fly:axis1:internal|The team came through:axis1:external|I got lucky:axis1:external"
+  },
+  {
+    "id": "A1_Q_AGENCY_LOW",
+    "parentId": "A1_D1",
+    "type": "question",
+    "text": "You said \"{A1_OPEN.answer}\". When things got difficult, what was your first instinct?",
+    "options": "Figure out what I could control|Wait for someone to step in|Push through alone|Feel stuck",
+    "target": "A1_D2",
+    "signal": "Figure out what I could control:axis1:internal|Push through alone:axis1:internal|Wait for someone to step in:axis1:external|Feel stuck:axis1:external"
+  },
+  {
+    "id": "A1_D2",
+    "parentId": null,
+    "type": "decision",
+    "text": null,
+    "options": "condition=axis1.dominant:internal:A1_R_INT;condition=axis1.dominant:external:A1_R_EXT",
+    "target": null,
+    "signal": null
+  },
+  {
+    "id": "A1_R_INT",
+    "parentId": "A1_D2",
+    "type": "reflection",
+    "text": "You see your hand in what happened today. That's agency — not everything went your way, but you stayed in the driver's seat.",
+    "options": null,
+    "target": "BRIDGE_1_2",
+    "signal": null
+  },
+  {
+    "id": "A1_R_EXT",
+    "parentId": "A1_D2",
+    "type": "reflection",
+    "text": "A tough day pulls attention outward — to what others did or didn't do. Fair enough. But somewhere in there, you made a call. Remember that.",
+    "options": null,
+    "target": "BRIDGE_1_2",
+    "signal": null
+  },
+  {
+    "id": "BRIDGE_1_2",
+    "parentId": null,
+    "type": "bridge",
+    "text": "Now let's shift from how you handled things — to what you gave.",
+    "options": null,
+    "target": "A2_OPEN",
+    "signal": null
+  },
+  {
+    "id": "A2_OPEN",
+    "parentId": "BRIDGE_1_2",
+    "type": "question",
+    "text": "Think about an interaction you had today. Were you giving or expecting?",
+    "options": "I helped someone|I taught someone something|I needed support|I felt overlooked",
+    "target": "A2_D1",
+    "signal": "I helped someone:axis2:contribution|I taught someone something:axis2:contribution|I needed support:axis2:entitlement|I felt overlooked:axis2:entitlement"
+  },
+  {
+    "id": "A2_D1",
+    "parentId": "A2_OPEN",
+    "type": "decision",
+    "text": null,
+    "options": "answer=I helped someone|I taught someone something:A2_Q_CONTRIB;answer=I needed support|I felt overlooked:A2_Q_ENTITLED",
+    "target": null,
+    "signal": null
+  },
+  {
+    "id": "A2_Q_CONTRIB",
+    "parentId": "A2_D1",
+    "type": "question",
+    "text": "You noted that you '{A2_OPEN.answer}'. Why did you step up in that moment?",
+    "options": "It was my job|I wanted to make things easier for them|I wanted to be recognized|It felt like the right thing to do",
+    "target": "A2_D2",
+    "signal": "It was my job:axis2:entitlement|I wanted to make things easier for them:axis2:contribution|I wanted to be recognized:axis2:entitlement|It felt like the right thing to do:axis2:contribution"
+  },
+  {
+    "id": "A2_Q_ENTITLED",
+    "parentId": "A2_D1",
+    "type": "question",
+    "text": "You mentioned you '{A2_OPEN.answer}'. What was the expectation there?",
+    "options": "I deserved better|It's only fair|I was overwhelmed and needed a hand|I expect people to do their part",
+    "target": "A2_D2",
+    "signal": "I deserved better:axis2:entitlement|It's only fair:axis2:entitlement|I was overwhelmed and needed a hand:axis2:contribution|I expect people to do their part:axis2:entitlement"
+  },
+  {
+    "id": "A2_D2",
+    "parentId": null,
+    "type": "decision",
+    "text": null,
+    "options": "condition=axis2.dominant:contribution:A2_R_CONTRIB;condition=axis2.dominant:entitlement:A2_R_ENTITLED",
+    "target": null,
+    "signal": null
+  },
+  {
+    "id": "A2_R_CONTRIB",
+    "parentId": "A2_D2",
+    "type": "reflection",
+    "text": "You brought value to the table today without necessarily waiting for an invitation. That discretionary effort is the heart of citizenship.",
+    "options": null,
+    "target": "BRIDGE_2_3",
+    "signal": null
+  },
+  {
+    "id": "A2_R_ENTITLED",
+    "parentId": "A2_D2",
+    "type": "reflection",
+    "text": "It's easy to focus on what we're owed or what we didn't receive. The shift to growth happens when we ask: 'What did I give?'",
+    "options": null,
+    "target": "BRIDGE_2_3",
+    "signal": null
+  },
+  {
+    "id": "BRIDGE_2_3",
+    "parentId": null,
+    "type": "bridge",
+    "text": "Finally, let's step back and look at the bigger picture of today.",
+    "options": null,
+    "target": "A3_OPEN",
+    "signal": null
+  },
+  {
+    "id": "A3_OPEN",
+    "parentId": "BRIDGE_2_3",
+    "type": "question",
+    "text": "When you think about today's biggest challenge, who comes to mind?",
+    "options": "Just me — it was my problem to solve|My team — we were all affected|A specific colleague who had it harder than me|The customer or end user we're serving",
+    "target": "A3_D1",
+    "signal": "Just me — it was my problem to solve:axis3:self|My team — we were all affected:axis3:altro|A specific colleague who had it harder than me:axis3:altro|The customer or end user we're serving:axis3:altro"
+  },
+  {
+    "id": "A3_D1",
+    "parentId": "A3_OPEN",
+    "type": "decision",
+    "text": null,
+    "options": "answer=Just me — it was my problem to solve:A3_Q_SELF;answer=My team — we were all affected|A specific colleague who had it harder than me|The customer or end user we're serving:A3_Q_ALTRO",
+    "target": null,
+    "signal": null
+  },
+  {
+    "id": "A3_Q_SELF",
+    "parentId": "A3_D1",
+    "type": "question",
+    "text": "You mentioned focusing on yourself. If you had zoomed out, how would that have changed your perspective on the challenge?",
+    "options": "I would have felt less pressure|I might have seen a different solution|It wouldn't have changed much|I would have realized others are struggling too",
+    "target": "A3_D2",
+    "signal": "I would have felt less pressure:axis3:altro|I might have seen a different solution:axis3:altro|It wouldn't have changed much:axis3:self|I would have realized others are struggling too:axis3:altro"
+  },
+  {
+    "id": "A3_Q_ALTRO",
+    "parentId": "A3_D1",
+    "type": "question",
+    "text": "Thinking beyond yourself takes energy. What motivated you to consider others in that moment?",
+    "options": "We succeed or fail together|I care about their experience|It's practical for solving the problem|I didn't want to carry it all myself",
+    "target": "A3_D2",
+    "signal": "We succeed or fail together:axis3:altro|I care about their experience:axis3:altro|It's practical for solving the problem:axis3:altro|I didn't want to carry it all myself:axis3:self"
+  },
+  {
+    "id": "A3_D2",
+    "parentId": null,
+    "type": "decision",
+    "text": null,
+    "options": "condition=axis3.dominant:altro:A3_R_ALTRO;condition=axis3.dominant:self:A3_R_SELF",
+    "target": null,
+    "signal": null
+  },
+  {
+    "id": "A3_R_ALTRO",
+    "parentId": "A3_D2",
+    "type": "reflection",
+    "text": "You're seeing the system, not just your part in it. That perspective-taking is what turns individual effort into shared meaning.",
+    "options": null,
+    "target": "SUMMARY",
+    "signal": null
+  },
+  {
+    "id": "A3_R_SELF",
+    "parentId": "A3_D2",
+    "type": "reflection",
+    "text": "It's natural to narrow our focus when things get hard. But remember: the fastest way out of our own head is to look at what the world needs from us.",
+    "options": null,
+    "target": "SUMMARY",
+    "signal": null
+  },
+  {
+    "id": "SUMMARY",
+    "parentId": "A3_R_SELF",
+    "type": "summary",
+    "text": "Today you leaned {axis1.dominant} on agency, {axis2.dominant} on contribution, and showed a {axis3.dominant} focus. {summary_reflection}",
+    "options": null,
+    "target": "END",
+    "signal": null
+  },
+  {
+    "id": "END",
+    "parentId": "SUMMARY",
+    "type": "end",
+    "text": "See you tomorrow.",
+    "options": null,
+    "target": null,
+    "signal": null
+  }
+]
