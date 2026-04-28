@@ -21,3 +21,4 @@ Designing a deterministic tree means accepting trade-offs in flexibility to guar
 - **Deeper Sub-trees:** I would add 2-3 more questions per axis to capture a more granular psychological profile.
 - **Cross-Axis Synthesis:** I would introduce bridging questions that dynamically reference *both* Axis 1 and Axis 2 before entering Axis 3 (e.g., "You handled the difficulty well (Internal Locus), but did you help others do the same? (Contribution)").
 - **More Nuanced Summaries:** The summary combinations could be expanded from the basic 3 variations to 8 (2x2x2) unique end-state paragraphs.
+<!-- Minor typo fixes applied -->
