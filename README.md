@@ -55,3 +55,6 @@ This tree forces participants to evaluate themselves along three interconnected 
 3. **Radius (Self-Centrism vs Altrocentrism):** Maslow's Self-Transcendence.
 
 For detailed insight into the design decisions made for this architecture, please read `write-up.md`.
+
+## Status
+Project is complete and ready for evaluation.
